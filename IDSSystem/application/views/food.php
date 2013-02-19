@@ -11,14 +11,15 @@
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="<?php echo base_url();?>styles/jqueryFunctions.js"></script>
-		
+		<script src="<?php echo base_url();?>styles/mainFunctions.js"></script>
+
 	</head>
 
 	<body>
 		<div class="menu">
 			<ul class="ca-menu">
 				<li>
-					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' id="show1">
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listExistingCategories();' id="show1">
 						<span class="ca-icon">C</span>
 						<div class="ca-content">
 							<p class="ca-main">Add Food</p>
@@ -27,7 +28,7 @@
 				</li>
 
 				<li>
-					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' id="show2">
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listEditFoods();' id="show2">
 						<span class="ca-icon">C</span>
 						<div class="ca-content">
 							<p class="ca-main">Edit Food</p>
@@ -62,27 +63,53 @@
 					</a>
 				</li>
 			</ul>	
-		</div>	
+		</div>
+
+		<div class="menu_right">
+			<ul class="ca-menu_right">
+				<li>
+					<a>
+						<div class="ca-content">
+							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
 		
+
+		
+
 		<!--
 			SEARCH FOOD
 		-->
 		<div id="space4">
 			<form class="searchFood">
-				<fieldset><p id="space_title">Search Food</p>
-				<input type="text" name="foodName">
-				<input type="submit" name="searchFood" value="SEARCH FOOD" size="1000">
-				<br />
-				//kapag may result, display food<br />
+				<fieldset>
+				<div id="searchFood1">
+					<p id="space_title">Search Food
+					<input type="text" name="foodName" style="width:300px"> </p>
+					<a href="#" id="searchFoodBtn"> SEARCH</a>
+					<br /><br />
+				</div>
+			
+				<div id="searchFood2">
+					<a>Food # 1 blah blah blah blah blah blah blah</a><br />
+					<a>Food # 2 blah blah blah blah blah blah blah</a><br />
+					<a>Food # 3 blah blah blah blah blah blah blah</a><br />
+					<a>Food # 4 blah blah blah blah blah blah blah</a><br />
+					<a>Food # 5 blah blah blah blah blah blah blah</a><br />
+					</p>
+				</div>
 
-				<img src="styles/img/skybg.jpg" id="foodImage"/>
-				<p id="foodInfo">
-				Food: <br/>
-				Category: <br />
-				Decription: <br />
-				Quantity: <br />
-				Price:
-				</p>				
+				<div id="searchFood3">
+					<img src="styles/img/burger.jpg" width="150" height="150" style="position:relative; left: 20px"/><br />
+					Food Name:*echo name here*<br />
+					Category: <br />
+					Description: <br />
+					Price: <br />
+					Quantity: <br />
+				</div>
 			</fieldset>
 			</form>
 		</div>
@@ -92,25 +119,13 @@
 		-->
 		<div id="space3">
 			<form class="deleteFood">
-				<fieldset><p id="space_title">Delete Food</p>
-				SELECT A FOOD TO DELETE:
-				<select name="foodCategory">
-					<option selected="selected"></option>
-					<option value="volvo">from database</option>
-					<option value="saab">Saab</option>
-				</select><br />
-				<input type="submit" name="selectFood" value="SELECT">
-				<br />
-				/*display food, kapag nakapagselect na*/<br />
+				<fieldset><p id="space_title">Delete Food</p><br /><br />
+					<input type="checkbox" name="foodName" /> Food # 1 blah blah blah blah blah blah blah<br />
+					<input type="checkbox" name="foodName" /> Food # 2 blah blah blah blah blah blah blah<br />
+					<input type="checkbox" name="foodName" /> Food # 3 blah blah blah blah blah blah blah<br />
+					<input type="checkbox" name="foodName" /> Food # 4 blah blah blah blah blah blah blah<br />
+					<input type="checkbox" name="foodName" /> Food # 5 blah blah blah blah blah blah blah<br />
 
-				<img src="styles/img/skybg.jpg" id="foodImage"/>
-				<p id="foodInfo">
-				Food: <br/>
-				Category: <br />
-				Decription: <br />
-				Quantity: <br />
-				Price:
-				</p>
 				<input type="submit" name="deleteFood" value="DELETE FOOD">
 				
 			</fieldset>
@@ -123,34 +138,32 @@
 		-->
 		<div id="space2">
 			<form class="editFood">
-				<fieldset><p id="space_title">Edit Food</p>
-				SELECT A FOOD TO EDIT:
-				<select name="foodName">
-					<option selected="selected"></option>
-					<option value="volvo">from database</option>
-					<option value="saab">Saab</option>
-				</select><br />
-				<input type="submit" name="selectFood" value="SELECT">
-				<br /><br />
+				<fieldset><p id="space_title">Edit Food</p><br />
+				<div id="editFood1">
+					SELECT A FOOD TO EDIT:
+					<div id="listOfFoods1">
+					</div>
+				<input type="button" name="editFoodBtn" value="SELECT" onclick='javascript:viewFoodDetails();'>
+					<br /><br />
+				</div>
 
-				/*edit details, lalabas lang kapag nakapagselect na*/<br />
-				Food name: &nbsp;<input type="text" name="foodName" value="*from database*">
-				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Category: &nbsp;<select name="foodCategory">
-								<option selected="selected"></option>
-								<option value="volvo">from database</option>
-								<option value="saab">Saab</option>
-							</select><br />
-				Description: &nbsp;<input type="name" name="foodDesc" value="*from database*">
-				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500"><br />
-				
-				
-				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" value="*from database*">
-				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="foodImg"><br />
+				<div id="editFood2">
+					<!-- 
+					<img src="styles/img/skybg.jpg" width="150" height="150" style="position:relative; left: 50px"/><br /><br />
+					Food name: &nbsp;<input type="text" name="foodName"><br />
+					<div id="listOfExistingCategories2">
+					</div>
+					Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+					Description: &nbsp;<input type="name" name="foodDesc" value="*from database*"><br />
+					Quantity: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500"><br />
+					Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" value="*from database*">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<input type="submit" name="editFood" value="SAVE CHANGES">
+					<input type="submit" name="editFood" value="SAVE CHANGES">
+				-->
+					<div id="foodDetails1">
+					</div>
+				</div>
 				
 			</fieldset>
 			</form>
@@ -160,32 +173,44 @@
 			ADD FOOD
 		-->
 		<div id="space1">
-			<form class="addFood" action='<?php echo base_url();?>index.php/foodManager/addFood' method='post'>
+			<form class="addFood" action='<?php echo base_url();?>index.php/foodManager/addFood' method='post' enctype="multipart/form-data"><br /><br />
 				<fieldset><p id="space_title">Add Food</p>
 				Food name: &nbsp;<input type="text" name="foodName" required autofocus>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Category: &nbsp;<select name="foodCategory">
-								<option selected="selected" value="food"></option>
-								<option value="volvo">from database</option>
-								<option value="saab">Saab</option>
-							</select><br />
+				<br />
+				<br />
+				<script type="text/javascript">
+					listExistingCategories();
+				</script>
+				<div id="listOfExistingCategories1">
+				</div>
+				<br />
 				Description: &nbsp;<input type="name" name="foodDesc">
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500" required><br />
+				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500" required><br /><br />
 				
 				
 				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" required>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="foodImg" required><br />
+				<!--
+				Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="foodImg" required><br /><br />
+				-->
+<?php echo $error;?>
+
+
+<!--
+<?php echo form_open_multipart('upload/do_upload');?>
+-->
+<input type="file" name="userfile" size="20" />
+
+<br /><br />
 
 				<input type="submit" name="addFood" value="ADD FOOD">
 				
 			</fieldset>
 			</form>
 		</div>
-	
-		
-			
+
 		<div class="footer"> McJOLLY &copy; 2013
 </div>
 				

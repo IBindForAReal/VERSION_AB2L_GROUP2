@@ -136,3 +136,64 @@ function previewCashierDetails(){
       }
     });
 }
+
+//food
+function listExistingCategories(){
+    //$("#listOfCategories2").empty();
+    //$("#listOfCategories3").empty();
+    //$("#categoryDetails").empty();
+
+    $.ajax({
+      url: "foodManager/obtainFoodCategories",
+      type: "POST",
+      data: {},
+
+      success: function(data) {
+      $("#listOfExistingCategories1").html(data);
+      }
+    });
+}
+
+function listEditFoods(){
+    //$("#listOfCashiers2").empty();
+    //$("#cashierDetails1").empty();
+
+    $.ajax({
+      url: "foodManager/obtainFoods",
+      type: "POST",
+      data: {},
+
+      success: function(data) {
+      $("#listOfFoods1").html(data);
+      }
+    });
+}
+
+function viewFoodDetails(){
+    foodName = $("#foodName").val();
+    $.ajax({
+      url: "foodManager/obtainFoodDetails",
+      type: "POST",
+      data: {foodName:foodName},
+
+      success: function(data) {
+      $("#foodDetails1").html(data);
+      }
+    });
+}
+
+function listSelectableCategories(){
+    //$("#listOfCategories2").empty();
+    //$("#listOfCategories3").empty();
+    //$("#categoryDetails").empty();
+
+    $.ajax({
+      url: "foodManager/obtainFoodCategories",
+      type: "POST",
+      data: {},
+
+      success: function(data) {
+      $("#listOfExistingCategories2").html(data);
+      }
+    });
+}

@@ -7,6 +7,10 @@ class imageAccess extends CI_Model {
 	function getAllImages(){
 		return $this->db->query("SELECT * from img_tbl")->result_array();
 	}
+
+	function getImageCount(){
+		return $this->db->query("SELECT count(food_name) from food")->result_array();
+	}
 }
 
 ?>

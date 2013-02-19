@@ -64,6 +64,18 @@
 				</li>
 			</ul>	
 		</div>	
+
+		<div class="menu_right">
+			<ul class="ca-menu_right">
+				<li>
+					<a>
+						<div class="ca-content">
+							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
 			
 		<!--
 			VIEW FOODS UNDER CATEGORY

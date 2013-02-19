@@ -55,12 +55,24 @@
 					</a>
 				</li>
 			</ul>	
+		</div>
+
+		<div class="menu_right">
+			<ul class="ca-menu_right">
+				<li>
+					<a>
+						<div class="ca-content">
+							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+						</div>
+					</a>
+				</li>
+			</ul>
 		</div>	
 		
 		<div id="space3">
 			<form class="disableCashier" action='<?php echo base_url();?>index.php/cashierManager/deleteCashier' method='post'>
-				<fieldset><p id="space_title">Disable Cashier Account</p>
-				SELECT AN ACCOUNT TO DISABLE: 
+				<fieldset><p id="space_title">Delete Cashier Account</p>
+				SELECT AN ACCOUNT TO DELETE: 
 				<div id="listOfCashiers2">
 				</div>
 				<br />

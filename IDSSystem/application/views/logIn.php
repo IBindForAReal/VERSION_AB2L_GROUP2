@@ -35,7 +35,6 @@
 			</p>
 		</form>
 		<div class="footer"> McJOLLY &copy; 2013
-</div>
-				
+	</div>			
 	</body>
 </html>
