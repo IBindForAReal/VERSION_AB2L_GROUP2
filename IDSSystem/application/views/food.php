@@ -6,13 +6,13 @@
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/menu.css" type="text/css"></link>
+		<link rel="stylesheet" href="styles/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="styles/css/menu.css" type="text/css" />
 		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="<?php echo base_url();?>styles/jqueryFunctions.js"></script>
-		<script src="<?php echo base_url();?>styles/mainFunctions.js"></script>
-
+		<script type="text/javascript" src="styles/js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="styles/js/jquery.min.js"></script>
+		<script type="text/javascript" src="styles/js/jqueryFunctions.js"></script>
+		
 	</head>
 
 	<body>
@@ -175,7 +175,7 @@
 		<div id="space1">
 			<form class="addFood" action='<?php echo base_url();?>index.php/foodManager/addFood' method='post' enctype="multipart/form-data"><br /><br />
 				<fieldset><p id="space_title">Add Food</p>
-				Food name: &nbsp;<input type="text" name="foodName" required autofocus>
+				Food name: &nbsp;<input type="text" name="foodName" required="required" autofocus>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<br />
 				<br />
@@ -187,10 +187,10 @@
 				<br />
 				Description: &nbsp;<input type="name" name="foodDesc">
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500" required><br /><br />
+				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500" required="required"><br /><br /><br />
 				
 				
-				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" required>
+				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" required="required">
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<!--
 				Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="foodImg" required><br /><br />
