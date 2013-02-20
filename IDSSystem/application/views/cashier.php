@@ -11,7 +11,7 @@
 		
 		<script src="<?php echo base_url();?>styles/js/jquery-1.8.3.js"></script>
 		<script src="<?php echo base_url();?>styles/js/jqueryFunctions.js"></script>
-		<script src="<?php echo base_url();?>styles/js/mainFunctions.js"></script>
+		<script src="<?php echo base_url();?>styles/mainFunctions.js"></script>
 		
 	</head>
 	
