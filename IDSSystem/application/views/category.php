@@ -6,11 +6,11 @@
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/menu.css" type="text/css"></link>
+		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/style.css" type="text/css"></link>
+		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/menu.css" type="text/css"></link>
 		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="<?php echo base_url();?>styles/jqueryFunctions.js"></script>
+		<script src="<?php echo base_url();?>styles/js/jquery-1.8.3.js"></script>
+		<script src="<?php echo base_url();?>styles/js/jqueryFunctions.js"></script>
 		<script src="<?php echo base_url();?>styles/mainFunctions.js"></script>
 		
 	</head>
