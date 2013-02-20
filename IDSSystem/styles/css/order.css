@@ -1,19 +1,23 @@
-#enlist, #Category1, #Category2, #Category3, #CategoryAll, #backToOrder, #resetOrder, #finalizeOrder{
+#enlist, #backToOrder, #resetOrder, #finalizeOrder{
 	font-family: 'Terminal Dosis';
     font-size: 20px;
     border-radius: 3px;
     cursor: pointer;
-    width: 120px;
+    width: 140px;
     height: 20px;
-    padding-bottom: 6px;
+    /*padding-bottom: 6px;*/
     background: -webkit-gradient(linear, left top, left bottom, from(#34a5cf), to(#2a8ac4));
     border: 1px solid #2b8bc7;
     text-shadow: 0 -1px rgba(0,0,0,0.3);
     margin-right: 1%;
     margin-bottom: 1px;
-    float: left;
+    padding: 6px 8px 10px 8px;
+    float:right;
+    z-index: 1;
     text-align: center;
+    color: white;
 }
+
 
 .enlistOrder input[type=submit]{
 	font-family: 'Terminal Dosis';
@@ -33,44 +37,21 @@
 	padding: 3px;
 	font-family: 'century gothic';
 	font-weight: bold;
-	font-size: 15px;
+    text-align: center;
+	font-size: 20px;
 	position: relative;
-	bottom: -25px;
-	margin-bottom: 40px;
-	left: -55px;
+	top: -5px;
+	right: 30px;
+    width: 50%;
 	cursor: pointer;
 }
 
 .enlistOrder img{
-	width: 100px;
-	height: 100px;
+	/*width: 100px;
+	height: 100px;*/
 	margin-right: -25px;
 	margin-left: -5px;
 	cursor: pointer;
-}
-
-.enlistOrder span{
-	font-family: 'Terminal Dosis';
-	font-size: 25px;
-	display: block;
-    background: rgba(113,123,161, 0.9);
-    color: #fff;
-    padding: 20px;
-    position: fixed;
-    bottom: 150px;
-    left: 10px;
-    width: 260px;
-    height: 0px;
-    opacity: 0;
-    text-align: left;
-    text-shadow: 1px 1px 1px #303857;
-    transition: all 8s ease-in-out;
-    -moz-transition-duration:0.3s;
-    -webkit-transition-duration:0.3s;
-}
-.enlistOrder a:hover span{
-	height: 260px;
-    opacity: 0.9;
 }
 
 #category_title{
@@ -81,15 +62,67 @@
 }
 
 #cashier_space{
+    left: 45px;
+    top: 55px;
+    width: 90%;
+    opacity: 0.8;
+    overflow-y: scroll;
 }
 
-#category1, #category2{
-    background-color: yellow;
-    border-bottom: 1px dashed;
-    padding: 10px;
-    height: 170px;
-    width: inherit;
-    margin-bottom: 10px;
+#menu-top{
+    float: right;
+    margin-right: 50px;
+    font-family: "Terminal Dosis";
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+#menu-top a, #menu-top a:hover{
+    background-color: white;
+    padding: 6px 8px 10px 8px;
+    border-bottom: 5px solid black;
+    -moz-border-radius: 0 0 8px 8px;
+    -webkit-border-radius: 0 0 8px 8px;
+    color: black;
+    cursor: pointer;
+}
+
+#orderList{
+    margin: 0px auto;
+}
+
+table{
+    margin: 0px auto;
+    font-family:century gothic;
+    margin-top: 0px;
+    border-radius: 0px;
+    letter-spacing: 1px;
+    border: solid 1px black;
+    border-spacing: 0;
     overflow: auto;
-
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 40px;
 }
+
+th{
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    padding: 0px 30px 0;
+}
+
+tr:nth-child(odd){
+    background-color: #D4D7FE;
+    color: #666666;
+}
+
+tr:nth-child(even){
+    background-color: #666666;
+    color: white;
+}
+
+td{ padding: 5 5px;}
+
+
+
