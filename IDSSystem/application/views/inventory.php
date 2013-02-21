@@ -6,8 +6,8 @@
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/menu.css" type="text/css"></link>
+		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/style.css" type="text/css"></link>
+		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/menu.css" type="text/css"></link>
 
 
 	</head>
