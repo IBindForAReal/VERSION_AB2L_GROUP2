@@ -6,8 +6,8 @@
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
-		<link rel="stylesheet" href="styles/style.css" type="text/css" />
-		<link rel="stylesheet" href="styles/login.css" type="text/css" />
+		<link rel="stylesheet" href="styles/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="styles/css/login.css" type="text/css" />
 		
 	</head>
 	<body>
