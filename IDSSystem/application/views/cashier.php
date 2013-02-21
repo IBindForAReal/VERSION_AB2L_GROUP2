@@ -71,7 +71,7 @@
 		
 		<div id="space3">
 			<form class="disableCashier" action='<?php echo base_url();?>index.php/cashierManager/deleteCashier' method='post'>
-				<fieldset><p id="space_title">Delete Cashier Account</p>
+				<fieldset><p id="space_title">Delete Cashier Account</p><br />
 				SELECT AN ACCOUNT TO DELETE: 
 				<div id="listOfCashiers2">
 				</div>
@@ -88,7 +88,7 @@
 
 		<div id="space2">
 			<form class="editCashier" action='<?php echo base_url();?>index.php/cashierManager/editCashier' method='post'>
-				<fieldset><p id="space_title">Edit Cashier</p>
+				<fieldset><p id="space_title">Edit Cashier</p><br />
 				SELECT A CASHIER TO EDIT:
 				<div id="listOfCashiers1">
 				</div>
@@ -104,10 +104,10 @@
 		
 		<div id="space1">
 			<form class="addCashier" action='<?php echo base_url();?>index.php/cashierManager/addCashier' method='post'>
-				<fieldset><p id="space_title">Add Cashier</p>
-				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName"><br />
-				Username: <input type="text" name="cashierUsername"><br />
-				Password: &nbsp;<input type="password" name="cashierPassword"><br />
+				<fieldset><p id="space_title">Add Cashier</p><br />
+				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName" required autofocus><br /><br /><br />
+				Username: <input type="text" name="cashierUsername" required autofocus><br /><br /><br />
+				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br /><br />
 
 				<input type="submit" name="addCashier" value="ADD CASHIER">
 				

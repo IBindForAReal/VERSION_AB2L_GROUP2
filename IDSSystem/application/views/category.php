@@ -82,7 +82,7 @@
 		-->
 		<div id="space4">
 			<form class="viewFood">
-				<fieldset><p id="space_title">View Foods under Category</p>
+				<fieldset><p id="space_title">View Foods under Category</p><br />
 				<div id="listOfCategories3">
 				</div>	
 				<input type="button" name="searchCategory" value="SELECT" onclick='javascript:viewFoodUnderCategory();'>
@@ -99,7 +99,7 @@
 		-->
 		<div id="space3">
 			<form class="deleteCategory" action='<?php echo base_url();?>index.php/categoryManager/deleteCategory' method='post'>
-				<fieldset><p id="space_title">Delete Category</p>
+				<fieldset><p id="space_title">Delete Category</p><br />
 				SELECT A CATEGORY TO DELETE:
 				<div id="listOfCategories2">
 				</div>
@@ -114,7 +114,7 @@
 		-->
 		<div id="space2">
 			<form class="editCategory" action='<?php echo base_url();?>index.php/categoryManager/editCategory' method='post'>
-				<fieldset><p id="space_title">Edit Category</p>
+				<fieldset><p id="space_title">Edit Category</p><br />
 				SELECT A CATEGORY TO EDIT: 
 				<div id="listOfCategories1">
 				</div>
@@ -133,9 +133,9 @@
 		-->
 		<div id="space1">
 			<form class="addCategory" action='<?php echo base_url();?>index.php/categoryManager/addCategory' method='post'>
-				<fieldset><p id="space_title">Add Category</p>
-				Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="name" name="categoryName" required autofocus><br />
-				Description: &nbsp;<input type="name" name="categoryDesc" required>
+				<fieldset><p id="space_title">Add Category</p><br />
+				Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="name" name="categoryName" required autofocus><br /><br /><br />
+				Description: &nbsp;<input type="name" name="categoryDesc" required><br />
 
 				<input type="submit" name="submitFood" value="ADD CATEGORY">
 				

@@ -174,7 +174,7 @@
 		-->
 		<div id="space1">
 			<form class="addFood" action='<?php echo base_url();?>index.php/foodManager/addFood' method='post' enctype="multipart/form-data"><br /><br />
-				<fieldset><p id="space_title">Add Food</p>
+				<fieldset><p id="space_title">Add Food</p><br />
 				Food name: &nbsp;<input type="text" name="foodName" required="required" autofocus>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<br />
