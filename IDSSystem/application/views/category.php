@@ -24,29 +24,37 @@
 		<div class="menu">
 			<ul class="ca-menu">
 				<li>
-					<a href="#" id="show1">
-						<span class="ca-icon">U</span>
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' id="show1">
+						<span class="ca-icon">F</span>
 						<div class="ca-content">
-							<p class="ca-main">Add Cashier</p>
+							<p class="ca-main">Add Category</p>
 						</div>
 					</a>
 				</li>
 
 				<li>
-					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listEditCashiers();' id="show2">
-						<span class="ca-icon">U</span>
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listEditCategories();' id="show2">
+						<span class="ca-icon">F</span>
 						<div class="ca-content">
-							<p class="ca-main">Edit Cashier</p>
+							<p class="ca-main">Edit Category</p>
 						</div>
 					</a>
 				</li>
 
 				<li>
-					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listDeleteCashiers();' id="show3">
-						<span class="ca-icon">U</span>
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listDeleteCategories();' id="show3">
+						<span class="ca-icon">F</span>
 						<div class="ca-content">
-							<p class="ca-main">Disable Cashier</p>
-							<p class="ca-sub"></p>
+							<p class="ca-main">Delete Category</p>
+						</div>
+					</a>
+				</li>
+
+				<li>
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listFoodCategories();' id="show4">
+						<span class="ca-icon">F</span>
+						<div class="ca-content">
+							<p class="ca-main">View Category</p>
 						</div>
 					</a>
 				</li>
@@ -60,7 +68,7 @@
 					</a>
 				</li>
 			</ul>	
-		</div>
+		</div>	
 
 		<div class="menu_right">
 			<ul class="ca-menu_right">
@@ -72,52 +80,76 @@
 					</a>
 				</li>
 			</ul>
-		</div>	
-		
-		<div id="space3">
-			<form class="disableCashier" action='<?php echo base_url();?>index.php/cashierManager/deleteCashier' method='post'>
-				<fieldset><p id="space_title">Delete Cashier Account</p><br />
-				SELECT AN ACCOUNT TO DELETE: 
-				<div id="listOfCashiers2">
-				</div>
-				<br />
-				<input type="button" name="selectCashier" value="SELECT" onclick='javascript:previewCashierDetails();'>
+		</div>
+			
+		<!--
+			VIEW FOODS UNDER CATEGORY
+		-->
+		<div id="space4">
+			<form class="viewFood">
+				<fieldset><p id="space_title">View Foods under Category</p><br />
+				<div id="listOfCategories3">
+				</div>	
+				<input type="button" name="searchCategory" value="SELECT" onclick='javascript:viewFoodUnderCategory();'>
 				<br /><br /><br />
-				<div id="cashierDetails2">
+				<div id="foodUnderCategory">
 				</div>
 				
 			</fieldset>
 			</form>
-		</div>	
+		</div>
+
+		<!--
+			DELETE CATEGORY
+		-->
+		<div id="space3">
+			<form class="deleteCategory" action='<?php echo base_url();?>index.php/categoryManager/deleteCategory' method='post'>
+				<fieldset><p id="space_title">Delete Category</p><br />
+				SELECT A CATEGORY TO DELETE:
+				<div id="listOfCategories2">
+				</div>
+
+				<input type="button" name="deleteCategory" value="DELETE CATEGORY" onclick='javascript:deleteSelectedCategory();javascript:listDeleteCategories();'>
+			</fieldset>
+			</form>
+		</div>
 
 
+		<!--
+			EDIT CATEGORY
+		-->
 		<div id="space2">
-			<form class="editCashier" action='<?php echo base_url();?>index.php/cashierManager/editCashier' method='post'>
-				<fieldset><p id="space_title">Edit Cashier</p><br />
-				SELECT A CASHIER TO EDIT:
-				<div id="listOfCashiers1">
+			<form class="editCategory" method='post'>
+				<fieldset><p id="space_title">Edit Category</p><br />
+				SELECT A CATEGORY TO EDIT: 
+				<div id="listOfCategories1">
 				</div>
-				<br /> 
-				<input type="button" name="selectCashier" value="SELECT" onclick='javascript:viewCashierDetails();'>
+				<br />
+				<input type="button" name="selectCategory" value="SELECT" onclick='javascript:viewCategoryDetails();'>
 				<br /><br /><br />
-				<div id="cashierDetails1">
+				<div id="categoryDetails">
 				</div>
-							
+				
 			</fieldset>
 			</form>
 		</div>
 		
+		<!--
+			ADD CATEGORY
+		-->
 		<div id="space1">
-			<form class="addCashier" action='<?php echo base_url();?>index.php/cashierManager/addCashier' method='post'>
-				<fieldset><p id="space_title">Add Cashier</p><br />
-				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName"required autofocus><br /><br /><br />
-				Username: <input type="text" name="cashierUsername" required autofocus><br /><br /><br />
-				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br /><br /><br />
+			<form class="addCategory" method='post'>
+				<fieldset><p id="space_title">Add Category</p><br />
+				Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="name" name="categoryName" id="categoryName1" required="required" autofocus><br /><br /><br />
+				Description: &nbsp;<input type="name" name="categoryDesc" id="categoryDesc1">
 
-				<input type="submit" name="addCashier" value="ADD CASHIER">
+				<input type="button" name="submitFood" value="ADD CATEGORY" onclick='javascript:addCategory();'>
 				
 			</fieldset>
 			</form>
+		</div>
+		
+		<div id="queryMessage">
 		</div>
 	
 		

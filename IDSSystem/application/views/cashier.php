@@ -110,9 +110,9 @@
 		<div id="space1">
 			<form class="addCashier" action='<?php echo base_url();?>index.php/cashierManager/addCashier' method='post'>
 				<fieldset><p id="space_title">Add Cashier</p><br />
-				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName"required autofocus><br /><br /><br />
+				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName" required autofocus><br /><br /><br />
 				Username: <input type="text" name="cashierUsername" required autofocus><br /><br /><br />
-				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br /><br /><br />
+				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br />
 
 				<input type="submit" name="addCashier" value="ADD CASHIER">
 				

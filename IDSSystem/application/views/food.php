@@ -3,16 +3,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
+<?php
+	if(isset($message))
+		echo $message;
+?>
+
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/menu.css" type="text/css" />
+		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/menu.css" type="text/css"></link>
 		
-		<script src="<?php echo base_url();?>styles/js/jquery-1.8.3.js"></script>
 		<script src="<?php echo base_url();?>styles/js/jquery.min.js"></script>
 		<script src="<?php echo base_url();?>styles/js/jqueryFunctions.js"></script>
-		
+		<script src="<?php echo base_url();?>styles/js/mainFunctions.js"></script>
+		<script src="<?php echo base_url();?>styles/js/ajaxfileupload.js"></script>
+
+
 	</head>
 
 	<body>
@@ -37,7 +44,7 @@
 				</li>
 
 				<li>
-					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' id="show3">
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listDeleteFoods();' id="show3">
 						<span class="ca-icon">C</span>
 						<div class="ca-content">
 							<p class="ca-main">Delete Food</p>
@@ -55,7 +62,7 @@
 				</li>
 
 				<li>
-					<a href='<?php echo base_url();?>index.php/logManager/back'>
+					<a href='<?php echo base_url();?>index.php/inventory'>
 						<span class="ca-icon">X</span>
 						<div class="ca-content">
 							<p class="ca-main">Back</p>
@@ -88,18 +95,13 @@
 				<fieldset>
 				<div id="searchFood1">
 					<p id="space_title">Search Food
-					<input type="text" name="foodName" style="width:300px"> </p>
-					<a href="#" id="searchFoodBtn"> SEARCH</a>
+					<input type="text" name="foodName3" id="foodName3" style="width:300px" onkeyup='javascript:findInputPattern(this.value);'>
+					 </p>
+					<!-- <input type="button" id="searchFoodBtn" value="SEARCH" onclick='javascript:findPattern();'> -->
 					<br /><br />
 				</div>
 			
-				<div id="searchFood2">
-					<a>Food # 1 blah blah blah blah blah blah blah</a><br />
-					<a>Food # 2 blah blah blah blah blah blah blah</a><br />
-					<a>Food # 3 blah blah blah blah blah blah blah</a><br />
-					<a>Food # 4 blah blah blah blah blah blah blah</a><br />
-					<a>Food # 5 blah blah blah blah blah blah blah</a><br />
-					</p>
+				<div id="viewResults">
 				</div>
 
 				<div id="searchFood3">
@@ -120,13 +122,10 @@
 		<div id="space3">
 			<form class="deleteFood">
 				<fieldset><p id="space_title">Delete Food</p><br /><br />
-					<input type="checkbox" name="foodName" /> Food # 1 blah blah blah blah blah blah blah<br />
-					<input type="checkbox" name="foodName" /> Food # 2 blah blah blah blah blah blah blah<br />
-					<input type="checkbox" name="foodName" /> Food # 3 blah blah blah blah blah blah blah<br />
-					<input type="checkbox" name="foodName" /> Food # 4 blah blah blah blah blah blah blah<br />
-					<input type="checkbox" name="foodName" /> Food # 5 blah blah blah blah blah blah blah<br />
-
-				<input type="submit" name="deleteFood" value="DELETE FOOD">
+					<div id="listofDeleteFoods">
+					</div>
+				<br />
+				<input type="button" name="deleteFood" value="DELETE FOOD" onclick='javascript:deleteSelectedFoods();'>
 				
 			</fieldset>
 			</form>
@@ -147,7 +146,6 @@
 					<br /><br />
 				</div>
 
-				<div id="editFood2">
 					<!-- 
 					<img src="styles/img/skybg.jpg" width="150" height="150" style="position:relative; left: 50px"/><br /><br />
 					Food name: &nbsp;<input type="text" name="foodName"><br />
@@ -163,7 +161,6 @@
 				-->
 					<div id="foodDetails1">
 					</div>
-				</div>
 				
 			</fieldset>
 			</form>
@@ -173,10 +170,11 @@
 			ADD FOOD
 		-->
 		<div id="space1">
-			<form class="addFood" action='<?php echo base_url();?>index.php/foodManager/addFood' method='post' enctype="multipart/form-data"><br /><br />
+			<form class="addFood" method='post' id="upload_file" enctype="multipart/form-data"><br /><br />
 				<fieldset><p id="space_title">Add Food</p><br />
-				Food name: &nbsp;<input type="text" name="foodName" required="required" autofocus>
+				Food name: &nbsp;<input type="text" name="foodName" id="foodName" required autofocus>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<br />
 				<br />
 				<br />
 				<script type="text/javascript">
@@ -185,12 +183,13 @@
 				<div id="listOfExistingCategories1">
 				</div>
 				<br />
-				Description: &nbsp;<input type="name" name="foodDesc">
+				<br />
+				Description: &nbsp;<input type="name" name="foodDesc" id="foodDesc">
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" min="0" max="500" required="required"><br /><br /><br />
+				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" id="foodQuantity" min="0" max="500" required><br /><br /><br />
 				
 				
-				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" required="required">
+				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" id="foodPrice" required>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<!--
 				Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="foodImg" required><br /><br />
@@ -201,7 +200,7 @@
 <!--
 <?php echo form_open_multipart('upload/do_upload');?>
 -->
-<input type="file" name="userfile" size="20" />
+<input type="file" name="userfile" id="userfile" size="20" />
 
 <br /><br />
 
@@ -209,6 +208,8 @@
 				
 			</fieldset>
 			</form>
+		</div>
+		<div id="queryMessage">
 		</div>
 
 		<div class="footer"> McJOLLY &copy; 2013
