@@ -13,6 +13,7 @@ public function addCashier(){
 	$password = $_POST['cashierPassword'];
 
 	$this->cashierAccess->addNewCashier($name, $username, $password);
+	$this->load->view("cashier", array('message'=> $name.' has been added as a cashier.'));
 }
 
 public function obtainCashiers(){
@@ -32,12 +33,14 @@ public function editCashier(){
 	$password = $_POST['cashierPassword'];
 
 	$this->cashierAccess->editExistingCashier($name, $username, $password);
+	$this->load->view("cashier", array('message'=> $name.' has been edited.'));
 }
 
 public function deleteCashier(){
 	$name = $_POST['cashierName'];
 
 	$this->cashierAccess->deleteExistingCashier($name);
+	$this->load->view("cashier", array('message'=> $name.' has been deleted.'));
 }
 
 }

@@ -8,32 +8,31 @@ public function index(){
 }
 
 public function logout(){
-	unset($_SESSION['name']);
-	unset($_SESSION['uname']);
-	unset($_SESSION['pword']);
-	$_SESSION['adminLoggedIn'] = false;
-	$_SESSION['cashierLoggedIn'] = false;
+	session_destroy();
 	
-	$this->load->view('logIn');
+	redirect(base_url());
 }
 
 public function checkUser(){
-		$userType = $this->input->post('user');
+		$userType = $_POST['user'];
 		if($userType == 'admin'){
 			$name = $_POST['login'];
 			$password = $_POST['password'];
 			$res = $this->logAccess->checkAdmin($name,$password);
 			if(isset($res[0]['admin_name'])){
-				$_SESSION['uname'] = $name;			// sets $_SESSION variables		
-				$_SESSION['pword'] = $password;
-				$_SESSION['name'] =$res[0]['admin_name'];
+				$_SESSION['uname'] = $res[0]['admin_name'];			// sets $_SESSION variables		
 				$_SESSION['adminLoggedIn'] = true; 		// this variable is used by other functions to check if someone is logged in
 				$_SESSION['cashierLoggedIn'] = false;
 
-				$this->load->view('inventory');
+				//$this->load->view('inventory');
+				$move = base_url()."index.php/inventory";
+				header("Location: $move");
+
 			}
 			else{
-				$this->load->view('logIn', array('message'=>'No match found for administrator!'));
+				$this->session->set_flashdata('logInError', 'No match found for administrator!');
+				redirect(base_url());
+				//$this->load->view('errorMessage', array('message'=>'No match found for administrator!'));
 			}
 		}
 		else{
@@ -41,15 +40,18 @@ public function checkUser(){
 			$password = $_POST['password'];
 			$res = $this->logAccess->checkCashier($name,$password);
 			if(isset($res[0]['cashier_name'])){
-				$_SESSION['uname'] = $name;
-				$_SESSION['pword'] = $password;
-				$_SESSION['name'] = $res[0]['cashier_name'];
+				$_SESSION['uname'] = $res[0]['cashier_name'];
 				$_SESSION['cashierLoggedIn'] = true; 	// this variable is used by other functions to check if someone is logged in
 				$_SESSION['adminLoggedIn'] = false;
-				$this->load->view('transaction');
+
+				//$this->load->view('transaction');
+				$move = base_url()."index.php/transaction";
+				header("Location: $move");
 			}
 			else{
-				$this->load->view('logIn', array('message'=>'No match found for cashier!'));
+				$this->session->set_flashdata('logInError', 'No match found for cashier!');
+				redirect(base_url());
+				//$this->load->view('logIn', array('message'=>'No match found for cashier!'));
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 28, 2012 at 05:04 PM
+-- Generation Time: Feb 19, 2013 at 09:01 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -27,17 +27,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `administrator` (
+  `admin_id` int(1) NOT NULL,
   `admin_name` varchar(50) NOT NULL,
   `admin_username` varchar(50) NOT NULL,
-  `admin_password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `admin_password` varchar(50) NOT NULL,
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `admin_name` (`admin_name`,`admin_username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `administrator`
 --
 
-INSERT INTO `administrator` (`admin_name`, `admin_username`, `admin_password`) VALUES
-('Mcjolly', 'IDS', 'System');
+INSERT INTO `administrator` (`admin_id`, `admin_name`, `admin_username`, `admin_password`) VALUES
+(1, 'IDS System', 'IDS', 'System');
 
 -- --------------------------------------------------------
 
@@ -46,36 +49,13 @@ INSERT INTO `administrator` (`admin_name`, `admin_username`, `admin_password`) V
 --
 
 CREATE TABLE IF NOT EXISTS `cashier` (
+  `cashier_id` int(100) NOT NULL AUTO_INCREMENT,
   `cashier_name` varchar(50) NOT NULL,
   `cashier_username` varchar(50) NOT NULL,
-  `cashier_password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cashier`
---
-
-INSERT INTO `cashier` (`cashier_name`, `cashier_username`, `cashier_password`) VALUES
-('Katherine', 'Kat', 'Tan'),
-('Kristine', 'Tin', 'Caracuel');
-
--- --------------------------------------------------------
---
--- Table structure for table `food`
---
-
-CREATE TABLE IF NOT EXISTS `food` (
-  `food_name` varchar(50) NOT NULL,
-  `food_category` varchar(50) NOT NULL,
-  `food_description` varchar(50) NOT NULL,
-  `food_quantity` int(10) NOT NULL,
-  `food_price` decimal(5,2) NOT NULL,
-  `food_image` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `food`
---
+  `cashier_password` varchar(50) NOT NULL,
+  PRIMARY KEY (`cashier_id`),
+  UNIQUE KEY `cashier_name` (`cashier_name`,`cashier_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -84,16 +64,30 @@ CREATE TABLE IF NOT EXISTS `food` (
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
+  `category_id` int(100) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(50) NOT NULL,
-  `category_description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `category_description` varchar(100) NOT NULL,
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `category_name` (`category_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Dumping data for table `category`
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food`
 --
 
-INSERT INTO `category` (`category_name`, `category_description`) VALUES
-('food','a'),
-('Extra','b');
+CREATE TABLE IF NOT EXISTS `food` (
+  `food_id` int(100) NOT NULL AUTO_INCREMENT,
+  `food_name` varchar(50) NOT NULL,
+  `food_category` varchar(50) NOT NULL,
+  `food_description` varchar(100) NOT NULL,
+  `food_quantity` int(5) NOT NULL,
+  `food_price` decimal(5,2) NOT NULL,
+  `food_image` varchar(50) NOT NULL,
+  PRIMARY KEY (`food_id`),
+  UNIQUE KEY `food_name` (`food_name`,`food_image`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

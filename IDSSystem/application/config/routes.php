@@ -39,7 +39,11 @@
 */
 
 $route['default_controller'] = "logManager";
+$route['index.php/inventory'] = "inventory";
+$route['index.php/transaction'] = "transaction";
 $route['404_override'] = '';
+
+
 
 
 /* End of file routes.php */

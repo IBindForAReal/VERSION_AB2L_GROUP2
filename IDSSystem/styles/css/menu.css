@@ -246,3 +246,13 @@ input[type=submit]{
 #viewByDateBtn1, #viewByDateBtn2{
     width: 200px;
 }
+
+.foodInstance{
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid black;
+    float: left;
+    /*background-color: none;*/
+    margin: 8px;
+}

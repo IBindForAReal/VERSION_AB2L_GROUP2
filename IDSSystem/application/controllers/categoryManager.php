@@ -11,7 +11,15 @@ public function addCategory(){
 	$name = $_POST['categoryName'];
 	$description = $_POST['categoryDesc'];
 
-	$this->categoryAccess->addNewCategory($name, $description);
+	$status = $this->categoryAccess->addNewCategory($name, $description);
+	if($status === ''){
+		$this->load->view("message", array('message'=> $name.' has been added as a category.'));
+	}
+	else{
+		$this->load->view("message", array('message'=> $name.' has not been added as a category.<br />error: '.$status));
+	}
+
+	//$this->load->view("category", array('message'=> $name.' has been added as a category.'));
 }
 
 public function obtainCategories(){
@@ -29,19 +37,33 @@ public function editCategory(){
 	$name = $_POST['categoryName'];
 	$description = $_POST['categoryDesc'];
 
-	$this->categoryAccess->editExistingCategory($name, $description);
+	$status = $this->categoryAccess->editExistingCategory($name, $description);
+	if($status === ''){
+		$this->load->view("message", array('message'=> $name.' has been edited as a category.'));
+	}
+	else{
+		$this->load->view("message", array('message'=> $name.' has not been edited as a category.<br />error: '.$status));
+	}
+	//$this->load->view("category", array('message'=> $name.' has been edited.'));
 }
 
 public function deleteCategory(){
 	$name = $_POST['categoryName'];
 
-	$this->categoryAccess->deleteExistingCategory($name);
+	$status = $this->categoryAccess->deleteExistingCategory($name);
+	if($status === ''){
+		$this->load->view("message", array('message'=> $name.' has been deleted as a category.'));
+	}
+	else{
+		$this->load->view("message", array('message'=> $name.' has not been deleted as a category.<br />error: '.$status));
+	}
+	//$this->load->view("category", array('message'=> $name.' has been deleted.'));
 }
 
 public function obtainFoodUnderCategory(){
 		$name = $_POST['categoryName'];
 		$res = $this->categoryAccess->getFoodUnderCategory($name);
-		$this->load->view('foodUnderCategory', array('food'=>$res));
+		$this->load->view('foodCategoryResults', array('foods'=>$res));
 	}
 
 }

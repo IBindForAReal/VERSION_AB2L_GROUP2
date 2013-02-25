@@ -51,7 +51,7 @@
 				</li>
 
 				<li>
-					<a href='<?php echo base_url();?>index.php/logManager/index'>
+					<a href='<?php echo base_url();?>index.php/logManager/logout'>
 						<span class="ca-icon">X</span>
 						<div class="ca-content">
 							<p class="ca-main">Log out</p>

@@ -11,10 +11,10 @@ $(document).ready(function(){
 		$("#viewByDate1").show();
 
 	$("#show1").click(function(){ //add food
-		$("#space1").show(900);
-		$("#space2").hide(900);
-		$("#space3").hide(900);
-		$("#space4").hide(900);
+		$("#space2").hide(700);
+		$("#space3").hide(700);
+		$("#space4").hide(700);
+		$("#space1").show(700);
 
 		//VIEW BY DATE
 		$("#viewByDate3").hide();
@@ -23,10 +23,10 @@ $(document).ready(function(){
 		});
 
 	$("#show2").click(function(){ //edit food
-		$("#space1").hide(900);
-		$("#space2").show(900);
-		$("#space3").hide(900);
-		$("#space4").hide(900);
+		$("#space1").hide(700);
+		$("#space3").hide(700);
+		$("#space4").hide(700);
+		$("#space2").show(700);
 
 		//EDIT FOOD
 		$("#editFood2").hide();
@@ -47,10 +47,10 @@ $(document).ready(function(){
 		});
 
 	$("#show3").click(function(){ //delete food
-		$("#space1").hide(900);
-		$("#space2").hide(900);
-		$("#space3").show(900);
-		$("#space4").hide(900);
+		$("#space1").hide(700);
+		$("#space2").hide(700);
+		$("#space4").hide(700);
+		$("#space3").show(700);
 
 		//DELETE CATEGORY
 		$("#deleteCategory2").hide();
@@ -63,10 +63,10 @@ $(document).ready(function(){
 		});
 
 	$("#show4").click(function(){ //search food
-		$("#space1").hide(900);
-		$("#space2").hide(900);
-		$("#space3").hide(900);
-		$("#space4").show(900);
+		$("#space1").hide(700);
+		$("#space2").hide(700);
+		$("#space3").hide(700);
+		$("#space4").show(700);
 
 		//SEARCH FOOD
 		$("#searchFood2").hide();
@@ -82,53 +82,53 @@ $(document).ready(function(){
 
 
 	$("#editFoodBtn").click(function(){
-		$("#editFood2").show(900);
+		$("#editFood2").show(700);
 	});
 
 	$("#searchFoodBtn").click(function(){
-		$("#searchFood2").show(900);
-		$("#searchFood3").show(900);
+		$("#searchFood2").show(700);
+		$("#searchFood3").show(700);
 	});
 
 	$("#editCategoryBtn").click(function(){
-		$("#editCategory2").show(900);
+		$("#editCategory2").show(700);
 	});
 
 	$("#deleteCategoryBtn").click(function(){
-		$("#deleteCategory2").show(900);
+		$("#deleteCategory2").show(700);
 	});
 
 	$("#viewFoodsUnderCategoryBtn").click(function(){
-		$("#viewFoodsUnderCategory2").show(900);
-		$("#viewFoodsUnderCategory3").show(900);
+		$("#viewFoodsUnderCategory2").show(700);
+		$("#viewFoodsUnderCategory3").show(700);
 	});
 
 	$("#editCashierBtn").click(function(){
-		$("#editCashier2").show(900);
+		$("#editCashier2").show(700);
 	});
 
 	$("#disableCashierBtn").click(function(){
-		$("#disableCashier2").show(900);
+		$("#disableCashier2").show(700);
 	});
 
 	$("#viewByCashierBtn1").click(function(){
 		$("#viewByCashier3").hide();
-		$("#viewByCashier2").show(900);
+		$("#viewByCashier2").show(700);
 	});
 
 	$("#viewByCashierBtn2").click(function(){
 		$("#viewByCashier2").hide();
-		$("#viewByCashier3").show(900);
+		$("#viewByCashier3").show(700);
 	});
 
 	$("#viewByDateBtn1").click(function(){
 		$("#viewByDate3").hide();
-		$("#viewByDate2").show(900);
+		$("#viewByDate2").show(700);
 	});
 
 	$("#viewByDateBtn2").click(function(){
 		$("#viewByDate2").hide();
-		$("#viewByDate3").show(900);
+		$("#viewByDate3").show(700);
 	});
 
 

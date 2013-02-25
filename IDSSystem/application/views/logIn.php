@@ -1,11 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<?php
-	if(isset($message))
-		echo $message;
-?>
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 	<head>
@@ -33,6 +28,10 @@
 				<input type="submit" name="user" value="cashier">
 				
 			</p>
+
+			<?php
+				echo $this->session->flashdata('logInError'); 
+			?>
 		</form>
 		<div class="footer"> McJOLLY &copy; 2013
 	</div>			
