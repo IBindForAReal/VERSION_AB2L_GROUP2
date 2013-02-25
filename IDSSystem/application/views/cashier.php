@@ -3,18 +3,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
+<?php
+	if(isset($message))
+		echo $message;
+?>
+
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/style.css" type="text/css"></link>
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/menu.css" type="text/css"></link>
 		
-		<script src="<?php echo base_url();?>styles/js/jquery-1.8.3.js"></script>
+		<script src="<?php echo base_url();?>styles/js/jquery.min.js"></script>
 		<script src="<?php echo base_url();?>styles/js/jqueryFunctions.js"></script>
-		<script src="<?php echo base_url();?>styles/mainFunctions.js"></script>
+		<script src="<?php echo base_url();?>styles/js/mainFunctions.js"></script>
 		
 	</head>
-	
+
 	<body>
 		<div class="menu">
 			<ul class="ca-menu">
@@ -47,7 +52,7 @@
 				</li>
 
 				<li>
-					<a href='<?php echo base_url();?>index.php/logManager/back'>
+					<a href='<?php echo base_url();?>index.php/inventory'>
 						<span class="ca-icon">X</span>
 						<div class="ca-content">
 							<p class="ca-main">Back</p>
@@ -105,9 +110,9 @@
 		<div id="space1">
 			<form class="addCashier" action='<?php echo base_url();?>index.php/cashierManager/addCashier' method='post'>
 				<fieldset><p id="space_title">Add Cashier</p><br />
-				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName" required autofocus><br /><br /><br />
+				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName"required autofocus><br /><br /><br />
 				Username: <input type="text" name="cashierUsername" required autofocus><br /><br /><br />
-				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br /><br />
+				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br /><br /><br />
 
 				<input type="submit" name="addCashier" value="ADD CASHIER">
 				
