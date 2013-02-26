@@ -103,7 +103,7 @@
 			DELETE CATEGORY
 		-->
 		<div id="space3">
-			<form class="deleteCategory" action='<?php echo base_url();?>index.php/categoryManager/deleteCategory' method='post'>
+			<form class="deleteCategory" method='post'>
 				<fieldset><p id="space_title">Delete Category</p><br />
 				SELECT A CATEGORY TO DELETE:
 				<div id="listOfCategories2">

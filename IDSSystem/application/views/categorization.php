@@ -75,7 +75,7 @@
 									echo "</li>";
 								}
 
-								if($count > 1){
+								/*if($count > 1){
 									$image = base_url()."uploads/".$foodEntry['food_image'];
 									$id = $foodEntry['food_id'];
 									$name = $foodEntry['food_name'];
@@ -88,7 +88,7 @@
 
 										//echo "<input type=\"number\" name=\"orderCount\" min=\"0\" max=\"50\"/>";
 									echo "</li>";
-								}
+								}*/
 
 							echo "</ul>";
 							echo "</div>";

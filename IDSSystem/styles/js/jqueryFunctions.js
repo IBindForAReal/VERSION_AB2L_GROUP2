@@ -114,24 +114,81 @@ $(document).ready(function(){
 	$("#viewByCashierBtn1").click(function(){
 		$("#viewByCashier3").hide();
 		$("#viewByCashier2").show(700);
+		getIndividualEarnings();
 	});
 
 	$("#viewByCashierBtn2").click(function(){
 		$("#viewByCashier2").hide();
 		$("#viewByCashier3").show(700);
+		getCashierTotalEarning();
 	});
 
 	$("#viewByDateBtn1").click(function(){
 		$("#viewByDate3").hide();
 		$("#viewByDate2").show(700);
+		getCashiersEarnings();
 	});
 
 	$("#viewByDateBtn2").click(function(){
 		$("#viewByDate2").hide();
 		$("#viewByDate3").show(700);
+		getDateEarning();
 	});
 
-
-
-
 });
+
+function getCashiersEarnings(){
+	date = $("#datepicker").val();
+
+	$.ajax({
+      url: "earningManager/obtainCashiersEarnings",
+      type: "POST",
+      data: {date:date},
+
+      success: function(data) {
+      $("#viewByDate2").html(data);
+      }
+    });
+}
+
+function getDateEarning(){
+	date = $("#datepicker").val();
+
+	$.ajax({
+      url: "earningManager/obtainDateEarning",
+      type: "POST",
+      data: {date:date},
+
+      success: function(data) {
+      $("#viewByDate3").html(data);
+      }
+    });
+}
+
+function getIndividualEarnings(){
+	name = $("#cashierName").val();
+
+	$.ajax({
+      url: "earningManager/obtainIndividualEarning",
+      type: "POST",
+      data: {name:name},
+
+      success: function(data) {
+      $("#viewByCashier2").html(data);
+      }
+    });
+}
+
+function getCashierTotalEarning(){
+	name = $("#cashierName").val();
+
+	$.ajax({
+      url: "earningManager/obtainCashierTotal",
+      type: "POST",
+      data: {name:name},
+
+      success: function(data) {
+      $("#viewByCashier3").html(data);
+      }
+    });
+}

@@ -12,8 +12,12 @@ public function addCashier(){
 	$username = $_POST['cashierUsername'];
 	$password = $_POST['cashierPassword'];
 
-	$this->cashierAccess->addNewCashier($name, $username, $password);
-	$this->load->view("cashier", array('message'=> $name.' has been added as a cashier.'));
+	$status = $this->cashierAccess->addNewCashier($name, $username, $password);
+	if($status == ''){
+		$this->load->view("message", array('message'=> $name.' has been added as a cashier.'));
+	}else{
+		$this->load->view("message", array('message'=> $name.' has not been added as a cashier.<br />error'.$status));
+	}
 }
 
 public function obtainCashiers(){
@@ -32,15 +36,23 @@ public function editCashier(){
 	$username = $_POST['cashierUsername'];
 	$password = $_POST['cashierPassword'];
 
-	$this->cashierAccess->editExistingCashier($name, $username, $password);
-	$this->load->view("cashier", array('message'=> $name.' has been edited.'));
+	$status = $this->cashierAccess->editExistingCashier($name, $username, $password);
+	if($status === ''){
+		$this->load->view("message", array('message'=> $name.' has been edited.'));
+	}else{
+		$this->load->view("message", array('message'=> $name.' has not been edited.<br />error'.$status));
+	}
 }
 
 public function deleteCashier(){
 	$name = $_POST['cashierName'];
 
-	$this->cashierAccess->deleteExistingCashier($name);
-	$this->load->view("cashier", array('message'=> $name.' has been deleted.'));
+	$status = $this->cashierAccess->deleteExistingCashier($name);
+	if($status === ''){
+		$this->load->view("message", array('message'=> $name.' has been deleted.'));
+	}else{
+		$this->load->view("message", array('message'=> $name.' has not been deleted as a cashier.<br />error'.$status));
+	}
 }
 
 }

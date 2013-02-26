@@ -4,6 +4,7 @@ function listEditCategories(){
     $("#listOfCategories2").empty();
     $("#listOfCategories3").empty();
     $("#categoryDetails").empty();
+    $("#listEarningCashiers").empty();
 
     $.ajax({
       url: "categoryManager/obtainCategories",
@@ -34,6 +35,7 @@ function viewCategoryDetails(){
 function listDeleteCategories(){
     $("#listOfCategories1").empty();
     $("#listOfCategories3").empty();
+    $("#listEarningCashiers").empty();
 
     $.ajax({
       url: "categoryManager/obtainCategories",
@@ -50,6 +52,7 @@ function listFoodCategories(){
     $("#listOfCategories1").empty();
     $("#listOfCategories2").empty();
     $("#foodUnderCategory").empty();
+    $("#listEarningCashiers").empty();
 
     $.ajax({
       url: "categoryManager/obtainCategories",
@@ -142,6 +145,8 @@ function listExistingCategories(){
     //$("#listOfCategories1").empty();
     $("#listOfCategories2").empty();
     $("#categoryDetails").empty();
+    $("#listEarningCashiers").empty();
+
 
     $.ajax({
       url: "foodManager/obtainFoodCategories",
@@ -205,6 +210,8 @@ function listSelectableCategories(){
     $("#listOfCategories1").empty();
     //$("#listOfCategories3").empty();
     $("#categoryDetails").empty();
+    $("#listEarningCashiers").empty();
+    
 
     $.ajax({
       url: "foodManager/obtainFoodCategories",
@@ -410,3 +417,72 @@ function deleteSelectedFoods(){
           $("#viewResults").empty();
     }
   }
+
+  function listEarningCashiers(){
+    $("#listOfCashiers1").empty();
+    $("#listOfCashiers2").empty();
+    $("#cashierDetails1").empty();
+
+    $.ajax({
+      url: "cashierManager/obtainCashiers",
+      type: "POST",
+      data: {},
+
+      success: function(data) {
+      $("#listEarningCashiers").html(data);
+      }
+    });
+}
+
+function addCashier(){
+  $("#queryMessage").empty();
+  cashierName = $("#cashierName1").val();
+  cashierUsername = $("#cashierUsername1").val();
+  cashierPassword = $("#cashierPassword1").val();
+
+  $.ajax({
+      url: "cashierManager/addCashier",
+      type: "POST",
+      data: {cashierName:cashierName,cashierUsername:cashierUsername,cashierPassword:cashierPassword},
+
+      success: function(data) {
+      $("#queryMessage").html(data);
+      }
+    });
+
+}
+
+
+function editSelectedCashier(){
+  $("#queryMessage").empty();
+  cashierName = $("#cashierName2").val();
+  cashierUsername = $("#cashierUsername2").val();
+  cashierPassword = $("#cashierPassword2").val();
+
+  $.ajax({
+      url: "cashierManager/editCashier",
+      type: "POST",
+      data: {cashierName:cashierName,cashierUsername:cashierUsername,cashierPassword:cashierPassword},
+
+      success: function(data) {
+      $("#queryMessage").html(data);
+      }
+    });
+
+}
+
+function deleteSelectedCashier(){
+  $("#queryMessage").empty();
+  cashierName = $("#cashierName").val();
+
+  $.ajax({
+      url: "cashierManager/deleteCashier",
+      type: "POST",
+      data: {cashierName:cashierName},
+
+      success: function(data) {
+      $("#queryMessage").html(data);
+      }
+    });
+
+}

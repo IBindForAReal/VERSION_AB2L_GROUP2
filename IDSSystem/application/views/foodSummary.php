@@ -1,6 +1,10 @@
+<script type="text/javascript" src="<?php echo base_url();?>styles/js/order.js"></script>
+
+
 <?php
 $foodCount = 0;
 $quantityList = $data[0];
+$finalCost = 0;
 
 foreach ($data[0] as $foodEntry){
 	$foodCount++;
@@ -26,6 +30,7 @@ for($i = 1; $i <= $foodCount; $i++){
 	$quantity = $quantityList[$i-1];
 
 	$total = $price * $quantity;
+	$finalCost += $total;
 	echo "<tr>";
 		echo "<td>$quantity</td>";
 		echo "<td>$name</td>";
@@ -34,9 +39,22 @@ for($i = 1; $i <= $foodCount; $i++){
 	echo "</tr>";
 }
 
+	echo "<tr>";
+		echo "<td></td>";
+		echo "<td></td>";
+		echo "<td></td>";
+		echo "<td id=\"cost\">$finalCost</td>";
+	echo "</tr>";
+
 echo "</table>";
 ?>
 
+	<a href='<?php echo base_url()."index.php/transaction"."#"; ?>'  id="backToOrder">BACK</a>
+	<a href='<?php echo base_url()."index.php/transaction"."#"; ?>'  id="resetOrder">RESET</a>
+	<a href='<?php echo base_url()."index.php/transaction"."#"; ?>'  id="finalizeOrder">FINALIZE</a>
+
+<!--
 <a href="#" id="backToOrder">BACK</a>
 <a href="#" id="resetOrder">RESET</a>
-<a href="#" id="finalizeOrder">ENLIST</a><br />
+<a href="#" id="finalizeOrder">ENLIST</a><br />\
+-->

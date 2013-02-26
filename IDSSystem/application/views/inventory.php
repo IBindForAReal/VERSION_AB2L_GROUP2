@@ -42,7 +42,7 @@
 				</li>
 
 				<li>
-					<a href="earnings.php">
+					<a href='<?php echo base_url();?>index.php/earningManager'>
 						<span class="ca-icon">q</span>
 						<div class="ca-content">
 							<p class="ca-main">View earnings</p>

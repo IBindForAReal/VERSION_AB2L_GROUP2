@@ -172,7 +172,7 @@ input[type=checkbox]{
     height: 20px;
 }
 
-input[type=submit]{
+input[type=submit], input[type=button]{
 /*Add food, edit food, delete food*/
     font-family: 'Terminal Dosis';
     font-size: 20px;
@@ -245,6 +245,7 @@ input[type=submit]{
 #viewByCashierBtn1, #viewByCashierBtn2,
 #viewByDateBtn1, #viewByDateBtn2{
     width: 200px;
+    height: 45px;
 }
 
 .foodInstance{

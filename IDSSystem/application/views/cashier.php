@@ -24,7 +24,7 @@
 		<div class="menu">
 			<ul class="ca-menu">
 				<li>
-					<a href="#" id="show1">
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' id="show1">
 						<span class="ca-icon">U</span>
 						<div class="ca-content">
 							<p class="ca-main">Add Cashier</p>
@@ -45,7 +45,7 @@
 					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javascript:listDeleteCashiers();' id="show3">
 						<span class="ca-icon">U</span>
 						<div class="ca-content">
-							<p class="ca-main">Disable Cashier</p>
+							<p class="ca-main">Delete Cashier</p>
 							<p class="ca-sub"></p>
 						</div>
 					</a>
@@ -75,13 +75,13 @@
 		</div>	
 		
 		<div id="space3">
-			<form class="disableCashier" action='<?php echo base_url();?>index.php/cashierManager/deleteCashier' method='post'>
+			<form class="disableCashier" method='post'>
 				<fieldset><p id="space_title">Delete Cashier Account</p><br />
 				SELECT AN ACCOUNT TO DELETE: 
 				<div id="listOfCashiers2">
 				</div>
 				<br />
-				<input type="button" name="selectCashier" value="SELECT" onclick='javascript:previewCashierDetails();'>
+				<input type="button" name="selectCashier" value="DELETE CASHIER" onclick='javascript:deleteSelectedCashier();javascript:listDeleteCashiers();'>
 				<br /><br /><br />
 				<div id="cashierDetails2">
 				</div>
@@ -92,7 +92,7 @@
 
 
 		<div id="space2">
-			<form class="editCashier" action='<?php echo base_url();?>index.php/cashierManager/editCashier' method='post'>
+			<form class="editCashier"  method='post'>
 				<fieldset><p id="space_title">Edit Cashier</p><br />
 				SELECT A CASHIER TO EDIT:
 				<div id="listOfCashiers1">
@@ -108,16 +108,18 @@
 		</div>
 		
 		<div id="space1">
-			<form class="addCashier" action='<?php echo base_url();?>index.php/cashierManager/addCashier' method='post'>
+			<form class="addCashier" method='post'>
 				<fieldset><p id="space_title">Add Cashier</p><br />
-				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName" required autofocus><br /><br /><br />
-				Username: <input type="text" name="cashierUsername" required autofocus><br /><br /><br />
-				Password: &nbsp;<input type="password" name="cashierPassword" required autofocus><br />
+				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName" id="cashierName1" required autofocus><br /><br /><br />
+				Username: <input type="text" name="cashierUsername" id="cashierUsername1" required autofocus><br /><br /><br />
+				Password: &nbsp;<input type="password" name="cashierPassword" id="cashierPassword1" required autofocus><br />
 
-				<input type="submit" name="addCashier" value="ADD CASHIER">
+				<input type="button" name="submitFood" value="ADD CASHIER" onclick='javascript:addCashier();'>
 				
 			</fieldset>
 			</form>
+		</div>
+		<div id="queryMessage">
 		</div>
 	
 		
