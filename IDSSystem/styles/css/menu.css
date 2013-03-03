@@ -257,3 +257,19 @@ input[type=submit], input[type=button]{
     /*background-color: none;*/
     margin: 8px;
 }
+
+#queryMessage{
+    font-family: 'Terminal Dosis';
+    font-size: 21px;
+    background-color: white;
+    border-right: solid 8px black;
+    position: absolute;
+    right: 0px;
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    text-align: justify;
+    opacity: 0.8;
+    top: 200px;
+    z-index: 1;
+}
