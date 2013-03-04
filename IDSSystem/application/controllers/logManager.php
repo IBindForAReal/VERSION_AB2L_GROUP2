@@ -3,16 +3,22 @@ session_start();
 
 class logManager extends CI_Controller {
 
-public function index(){
-	$this->load->view('logIn');
+public function index(){				//this function directly go to log in page		
+	$this->load->view('logIn');	
 }
 
-public function logout(){
+public function logout(){				//destroy all the sessions when the user logged out
 	session_destroy();
 	
 	redirect(base_url());
 }
 
+/*	
+	This function checks if the input value of the user exists in the database. 
+	If the data does not exists, an error message will appear then redirect to the same page.
+	It goes both for administrator and cashier.
+
+*/
 public function checkUser(){
 		$userType = $_POST['user'];
 		if($userType == 'admin'){
@@ -20,11 +26,11 @@ public function checkUser(){
 			$password = $_POST['password'];
 			$res = $this->logAccess->checkAdmin($name,$password);
 			if(isset($res[0]['admin_name'])){
-				$_SESSION['uname'] = $res[0]['admin_name'];			// sets $_SESSION variables		
-				$_SESSION['adminLoggedIn'] = true; 		// this variable is used by other functions to check if someone is logged in
+				$_SESSION['uname'] = $res[0]['admin_name'];			
+				$_SESSION['adminLoggedIn'] = true; 	
 				$_SESSION['cashierLoggedIn'] = false;
 
-				//$this->load->view('inventory');
+			
 				$move = base_url()."index.php/inventory";
 				header("Location: $move");
 
@@ -32,7 +38,6 @@ public function checkUser(){
 			else{
 				$this->session->set_flashdata('logInError', 'No match found for administrator!');
 				redirect(base_url());
-				//$this->load->view('errorMessage', array('message'=>'No match found for administrator!'));
 			}
 		}
 		else{
@@ -41,23 +46,27 @@ public function checkUser(){
 			$res = $this->logAccess->checkCashier($name,$password);
 			if(isset($res[0]['cashier_name'])){
 				$_SESSION['uname'] = $res[0]['cashier_name'];
-				$_SESSION['cashierLoggedIn'] = true; 	// this variable is used by other functions to check if someone is logged in
+				$_SESSION['cashierLoggedIn'] = true;
 				$_SESSION['adminLoggedIn'] = false;
 
-				//$this->load->view('transaction');
+				
 				$move = base_url()."index.php/transaction";
 				header("Location: $move");
 			}
 			else{
 				$this->session->set_flashdata('logInError', 'No match found for cashier!');
 				redirect(base_url());
-				//$this->load->view('logIn', array('message'=>'No match found for cashier!'));
+				
 			}
 		}
 	}
 
+/*
+	This function direct the page to the previous page which is the inventory page for the log
+
+*/
 public function back(){
-	//$this->load->view('inventory',array('admin'=>$res));
+	
 	$this->load->view('inventory');
 }
 
