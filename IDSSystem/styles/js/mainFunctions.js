@@ -1,3 +1,63 @@
+function validateLogIn(){
+  var set,i;
+  var form=document.loginForm;
+
+  for(i=0;i<2;i++){
+    set=form.elements[i];
+    if(!set.value){
+      alert('You haven\'t filled in your '+set.name+'.');
+      return false;
+    }
+  }
+  return true;
+
+}
+function validateAddCashier(f){
+  console.log(f);
+  var name=f.cashierName;
+  var uname=f.cashierUsername;
+  var pword=f.cashierPassword;
+
+      if(name.value=="" || name.value==null){
+        alert('You haven\'t filled in your Name.');
+        return false;  
+      }
+      if(uname.value=="" || uname.value==null){
+        alert('You haven\'t filled in your username.');
+        return false;
+
+      }
+      if(pword.value=="" || pword.value==null){
+        alert('You haven\'t filled in your password.');
+        return false;
+      }
+      
+    addCashier();
+    return true;
+
+
+}
+
+function validateEditCashier(f){
+  var name=f.cashierName;
+  var uname=f.cashierUsername;
+  var pword=f.cashierPassword;
+
+  
+      if(uname.value=="" || uname.value==null){
+        alert('You haven\'t filled in your username.');
+        return false;
+
+      }
+      if(pword.value=="" || pword.value==null){
+        alert('You haven\'t filled in your password.');
+        return false;
+      }
+    editSelectedCashier();
+    return true;
+
+
+}
 //Category
 
 function listEditCategories(){

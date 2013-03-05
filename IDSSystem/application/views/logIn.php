@@ -9,10 +9,12 @@
 
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/style.css" type="text/css"></link>
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/login.css" type="text/css"></link>
+
+		<script src="<?php echo base_url();?>styles/js/mainFunctions.js"></script>
 		
 	</head>
 	<body>
-		<form class="login" action='<?php echo base_url();?>index.php/logManager/checkUser' method='post'>
+		<form name="loginForm" class="login" action='<?php echo base_url();?>index.php/logManager/checkUser' method='post' onsubmit="return validateLogIn()">
 			<h1><span class="log-in">Log in to your McJolly account</span></h1>
 			<p class="float">
 				<label for="login"><img class="icon-login" src="<?php echo base_url();?>styles/img/user.png" />Username</label>

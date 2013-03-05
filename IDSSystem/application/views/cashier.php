@@ -75,7 +75,7 @@
 		</div>	
 		
 		<div id="space3">
-			<form class="disableCashier" method='post'>
+			<form name="deleteCashier"class="disableCashier" method='post' onsubmit="return validateDeleteCashier()">
 				<fieldset><p id="space_title">Delete Cashier Account</p><br />
 				SELECT AN ACCOUNT TO DELETE: 
 				<div id="listOfCashiers2">
@@ -92,29 +92,29 @@
 
 
 		<div id="space2">
-			<form class="editCashier"  method='post'>
+			
 				<fieldset><p id="space_title">Edit Cashier</p><br />
 				SELECT A CASHIER TO EDIT:
 				<div id="listOfCashiers1">
 				</div>
 				<br /> 
-				<input type="button" name="selectCashier" value="SELECT" onclick='javascript:viewCashierDetails();'>
+				<input type="button" name="selectCashier" value="SELECT" onclick="javascript:viewCashierDetails();">
 				<br /><br /><br />
 				<div id="cashierDetails1">
 				</div>
 							
 			</fieldset>
-			</form>
+			
 		</div>
 		
 		<div id="space1">
-			<form class="addCashier" method='post'>
+			<form name="addCashierForm" class="addCashier" method='post' onsubmit="return validateAddCashier(this);">
 				<fieldset><p id="space_title">Add Cashier</p><br />
 				Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="cashierName" id="cashierName1" required autofocus><br /><br /><br />
 				Username: <input type="text" name="cashierUsername" id="cashierUsername1" required autofocus><br /><br /><br />
 				Password: &nbsp;<input type="password" name="cashierPassword" id="cashierPassword1" required autofocus><br />
 
-				<input type="button" name="submitFood" value="ADD CASHIER" onclick='javascript:addCashier();'>
+				<input type="submit" name="submitFood" value="ADD CASHIER">
 				
 			</fieldset>
 			</form>
