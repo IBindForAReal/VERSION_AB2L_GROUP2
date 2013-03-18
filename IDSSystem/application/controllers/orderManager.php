@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
 
 class orderManager extends CI_Controller {
 
@@ -12,9 +11,17 @@ public function obtainCategorization(){
 	foreach($res as $category){
      	$myArray[] = $this->orderAccess->foodGrouping($category['category_name']);
 	 }
-	 //print_r($myArray);
 	$this->load->view('categorization', array('data'=>$myArray));
   }
+
+public function obtainMaxCount(){
+	$name = $_POST['foodName'];
+	$res = $this->orderAccess->getFoodRemaining($name);
+	//print_r($res[0]['food_quantity']);
+	$max = $res[0]['food_quantity'];
+	echo $max;
+	//echo $res[0]['food_quantity'];
+}
 
  public function viewOrderSummary(){
 	$data1 = json_decode(stripslashes($_POST['data1']));
@@ -34,7 +41,7 @@ public function obtainCategorization(){
 	$data2 = json_decode(stripslashes($_POST['data2']));
 	$cost = $_POST['cost'];
 
- 	$cashierName = $_SESSION['uname']; 
+ 	$cashierName = $this->session->userdata('uname'); 
  	$date = date("m/d/Y");
 
 	//$file_name = base_url().'database/records.xml';

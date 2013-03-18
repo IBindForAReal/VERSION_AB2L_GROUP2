@@ -1,13 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
 
 class foodManager extends CI_Controller {
-
-function __construct()
-{
-	parent::__construct();
-	$this->load->helper(array('form', 'url'));
-}
 
 public function index(){
 	$this->load->view('food', array('error' => ' ' ));
@@ -25,7 +18,7 @@ public function addFood(){
 	$config['max_height']  = '768';
 
       $this->load->library('upload', $config);
-      $name = $_SESSION['foodName'];
+      $name = $this->session->userdata('foodName');
       if (!$this->upload->do_upload($file_element_name))
       {
          $status = 'error';
@@ -36,12 +29,17 @@ public function addFood(){
       {
          $data = $this->upload->data();
 
-	    $name = $_SESSION['foodName'];
-		$category = $_SESSION['foodCategory'];
-		$description = $_SESSION['foodDesc'];
-		$quantity = $_SESSION['foodQuantity'];
-		$price = $_SESSION['foodPrice'];
+	    $name = $this->session->userdata('foodName');
+		$category = $this->session->userdata('foodCategory');
+		$description = $this->session->userdata('foodDesc');
+		$quantity = $this->session->userdata('foodQuantity');
+		$price = $this->session->userdata('foodPrice');
 
+		/*
+		echo "<script type=\"text/javascript\">";
+		echo "alert($name);";
+		echo "</script>";
+		*/
 		$image = $data['file_name'];
 
          $file_id = $this->foodAccess->addNewFood($name, $category, $description, $quantity, $price, $image);
@@ -57,11 +55,15 @@ public function addFood(){
          	$msg = $name.' has not been added as a food.<br>error: '.$file_id;
          }
       }
-      unset($_SESSION['foodName']);
-      unset($_SESSION['foodCategory']);
-      unset($_SESSION['foodDesc']);
-      unset($_SESSION['foodQuantity']);
-      unset($_SESSION['foodPrice']);
+      $tempdata = array(
+                   'foodName' => '',
+                   'foodCategory' => '',
+                   'foodDesc' => '', 
+                   'foodQuantity'=> '',
+                   'foodPrice' => ''
+               );
+	$this->session->unset_userdata($tempdata);
+
       @unlink($_FILES[$file_element_name]);
    echo json_encode(array('status' => $status, 'msg' => $msg));
 }
@@ -83,11 +85,14 @@ public function obtainFoodDetails(){
 	}
 
 public function setFoodDetails(){
-	$_SESSION['foodName'] = $_POST['foodName'];
-	$_SESSION['foodCategory'] = $_POST['foodCategory'];
-	$_SESSION['foodDesc'] = $_POST['foodDesc'];
-	$_SESSION['foodQuantity'] = $_POST['foodQuantity'];
-	$_SESSION['foodPrice'] = $_POST['foodPrice'];
+	$tempdata = array(
+                   'foodName' => $_POST['foodName'],
+                   'foodCategory' => $_POST['foodCategory'],
+                   'foodDesc' => $_POST['foodDesc'], 
+                   'foodQuantity'=> $_POST['foodQuantity'],
+                   'foodPrice' => $_POST['foodPrice']
+               );
+	$this->session->set_userdata($tempdata);
 }
 
 public function editFood(){
@@ -135,6 +140,21 @@ public function obtainSearchFoods(){
 
 	$res = $this->foodAccess->searchExistingPatterns($pattern);
 	$this->load->view('searchResults', array('foods'=>$res));
+}
+
+/*
+	This function checks if there is already an existing cashier name
+*/
+public function duplicateNameCheck(){
+	$name = $_POST['foodName'];
+
+	$count = 0;
+
+	$res = $this->foodAccess->checkExistingName($name);
+	foreach ($res as $res) {
+		$count += 1;
+	}
+		echo $count;
 }
 
 }

@@ -1,10 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
 
 class categoryManager extends CI_Controller {
 
 /*
-	This fucntion views the category page.
+	This function views the category page.
 */
 
 public function index(){
@@ -90,6 +89,21 @@ public function obtainFoodUnderCategory(){
 		$res = $this->categoryAccess->getFoodUnderCategory($name);
 		$this->load->view('foodCategoryResults', array('foods'=>$res));
 	}
+
+/*
+	This function checks if there is already an existing category name
+*/
+public function duplicateNameCheck(){
+	$name = $_POST['categoryName'];
+
+	$count = 0;
+
+	$res = $this->categoryAccess->checkExistingName($name);
+	foreach ($res as $res) {
+		$count += 1;
+	}
+		echo $count;
+}
 
 }
 

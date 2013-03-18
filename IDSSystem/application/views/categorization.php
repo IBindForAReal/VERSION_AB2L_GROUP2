@@ -1,5 +1,6 @@
+<!-- 
 <script type="text/javascript" src="<?php echo base_url();?>styles/js/order.js"></script>
-
+-->
 
 <script type="text/javascript">
 			$(document).ready(function() 
@@ -18,7 +19,7 @@
 		</script>
 
 <form class="enlistOrder" name="enlistOrder">
-				<a href='<?php echo base_url()."index.php/transaction"."#"; ?>' onclick='javascript:orderSelectedFoods();' id="enlist">ENLIST FOOD</a>
+				<a href='<?php echo base_url()."index.php/transaction"."#"; ?>' onclick='javascript:orderSelectedFoods();' id="enlist">ENLIST</a>
 				
 				<!--
 				<input type="button" name="orderFood" id="enlist" value="ENLIST FOOD" onclick='javascript:orderSelectedFoods();'>
@@ -27,6 +28,12 @@
 	$count = 1;
 	$leftImage = base_url()."styles/img/left-arrow.png";
 	$rightImage = base_url()."styles/img/right-arrow.png";
+
+	$categoryCount = 0;
+	foreach ($data[0] as $categoryEntry) {
+		$categoryCount += 1;
+	}
+
 	foreach ($data[0] as $categoryEntry) {
 		$name = $categoryEntry['category_name'];
 		echo "<br /><br />";
@@ -75,7 +82,7 @@
 									echo "</li>";
 								}
 
-								/*if($count > 1){
+								if($count == $categoryCount){
 									$image = base_url()."uploads/".$foodEntry['food_image'];
 									$id = $foodEntry['food_id'];
 									$name = $foodEntry['food_name'];
@@ -88,7 +95,7 @@
 
 										//echo "<input type=\"number\" name=\"orderCount\" min=\"0\" max=\"50\"/>";
 									echo "</li>";
-								}*/
+								}
 
 							echo "</ul>";
 							echo "</div>";

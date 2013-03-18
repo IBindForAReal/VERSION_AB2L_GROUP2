@@ -8,8 +8,6 @@
 		<link rel="shortcut icon" href="favicon.png" />
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/style.css" type="text/css"></link>
 		<link rel="stylesheet" href="<?php echo base_url();?>styles/css/menu.css" type="text/css"></link>
-
-
 	</head>
 	<body>
 		<div class="menu">
@@ -66,7 +64,7 @@
 				<li>
 					<a>
 						<div class="ca-content">
-							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+							<p class="ca-main_right"><?php echo $this->session->userdata('uname'); ?></p>
 						</div>
 					</a>
 				</li>

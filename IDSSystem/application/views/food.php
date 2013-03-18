@@ -3,11 +3,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<?php
-	if(isset($message))
-		echo $message;
-?>
-
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
@@ -77,7 +72,7 @@
 				<li>
 					<a>
 						<div class="ca-content">
-							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+							<p class="ca-main_right"><?php echo $this->session->userdata('uname'); ?></p>
 						</div>
 					</a>
 				</li>
@@ -125,7 +120,7 @@
 					<div id="listofDeleteFoods">
 					</div>
 				<br />
-				<input type="button" name="deleteFood" value="DELETE FOOD" onclick='javascript:deleteSelectedFoods();'>
+				<input type="button" name="deleteFood" id="deleteButton3" value="DELETE FOOD" onclick='javascript:deleteSelectedFoods();'>
 				
 			</fieldset>
 			</form>
@@ -142,7 +137,7 @@
 					SELECT A FOOD TO EDIT:
 					<div id="listOfFoods1">
 					</div>
-				<input type="button" name="editFoodBtn" value="SELECT" onclick='javascript:viewFoodDetails();'>
+				<input type="button" name="editFoodBtn" id="editButton3" value="SELECT" onclick='javascript:viewFoodDetails();'>
 					<br /><br />
 				</div>
 
@@ -169,10 +164,10 @@
 		<!--
 			ADD FOOD
 		-->
-		<div id="space1">
+		<div id="space1" style="top: -10px;">
 			<form class="addFood" method='post' id="upload_file" enctype="multipart/form-data"><br /><br />
 				<fieldset><p id="space_title">Add Food</p><br />
-				Food name: &nbsp;<input type="text" name="foodName" id="foodName" required autofocus>
+				Food name: &nbsp;<input type="text" name="foodName" id="foodName" onkeyup='javascript:checkFoodNameDuplicate(this.value);' required="required" autofocus>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<br />
 				<br />
@@ -186,10 +181,10 @@
 				<br />
 				Description: &nbsp;<input type="name" name="foodDesc" id="foodDesc">
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" id="foodQuantity" min="0" max="500" required><br /><br /><br />
+				Quantity: &nbsp;&nbsp;<input type="number" name="foodQuantity" id="foodQuantity" min="0" step="1" required><br /><br /><br />
 				
 				
-				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="foodPrice" id="foodPrice" required>
+				Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="foodPrice" id="foodPrice" min="0" step="any" required>
 				<!--TAB-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<!--
 				Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="foodImg" required><br /><br />
@@ -204,7 +199,7 @@
 
 <br /><br />
 
-				<input type="submit" name="addFood" value="ADD FOOD">
+				<input type="submit" name="addFood" id="addButton3" value="ADD FOOD">
 				
 			</fieldset>
 			</form>

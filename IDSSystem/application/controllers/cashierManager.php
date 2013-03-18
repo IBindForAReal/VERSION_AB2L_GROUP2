@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start();
 
 class cashierManager extends CI_Controller {
 
@@ -67,6 +66,36 @@ public function deleteCashier(){
 	}else{
 		$this->load->view("message", array('message'=> $name.' has not been deleted as a cashier.<br />error'.$status));
 	}
+}
+
+/*
+	This function checks if there is already an existing cashier name
+*/
+public function duplicateNameCheck(){
+	$name = $_POST['cashierName'];
+
+	$count = 0;
+
+	$res = $this->cashierAccess->checkExistingName($name);
+	foreach ($res as $res) {
+		$count += 1;
+	}
+		echo $count;
+}
+
+/*
+	This function checks if there is already an existing cashier name
+*/
+public function duplicateUsernameCheck(){
+	$name = $_POST['cashierUsername'];
+
+	$count = 0;
+
+	$res = $this->cashierAccess->checkExistingUsername($name);
+	foreach ($res as $res) {
+		$count += 1;
+	}
+		echo $count;
 }
 
 }

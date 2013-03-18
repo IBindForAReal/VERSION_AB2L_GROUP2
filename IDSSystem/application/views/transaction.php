@@ -41,7 +41,7 @@
 	<body onload="updateClock(); setInterval('updateClock()', 1000 )">
 
 		<div id="menu-top">
-			<a><?php echo $_SESSION['uname']; ?> | <?php echo date("m/d/Y");  ?> | <span id="clock">&nbsp;</span> </a>
+			<a><?php echo $this->session->userdata('uname'); ?> | <?php echo date("m/d/Y");  ?> | <span id="clock">&nbsp;</span> </a>
 			<a href='<?php echo base_url();?>index.php/logManager/logout'>Log Out</a>
 		</div>
 

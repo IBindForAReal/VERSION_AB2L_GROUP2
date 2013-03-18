@@ -72,6 +72,13 @@ class categoryAccess extends CI_Model {
 		return $this->db->query("SELECT * from food where food_category='$name'")->result_array();
 	}
 
+	/*
+	This function checks if a category name is already existing
+	*/
+	function checkExistingName($name){
+		return  $this->db->query("SELECT category_name from category where category_name='$name'")->result_array();
+	}
+
 }
 
 ?>

@@ -18,7 +18,7 @@ class cashierAccess extends CI_Model {
 
 	function getAllCashiers(){
 		/* simply displays the names of all cashier for selection (drop down menu) */
-		return $this->db->query("SELECT cashier_name from cashier")->result_array();
+		return $this->db->query("SELECT cashier_name from cashier order by cashier_name asc")->result_array();
 	}
 
 	function getCashierDetails($name){
@@ -51,6 +51,19 @@ class cashierAccess extends CI_Model {
     		return $this->error;
 		}
 		return '';
+	}
+	/*
+		This function checks if a category name is already existing
+	*/
+	function checkExistingName($name){
+		return  $this->db->query("SELECT cashier_name from cashier where cashier_name='$name'")->result_array();
+	}
+
+		/*
+		This function checks if a category username is already existing
+	*/
+	function checkExistingUsername($name){
+		return  $this->db->query("SELECT cashier_username from cashier where cashier_username='$name'")->result_array();
 	}
 
 }

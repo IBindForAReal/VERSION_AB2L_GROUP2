@@ -3,11 +3,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<?php
-	if(isset($message))
-		echo $message;
-?>
-
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
@@ -64,7 +59,7 @@
 				<li>
 					<a>
 						<div class="ca-content">
-							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+							<p class="ca-main_right"><?php echo $this->session->userdata('uname'); ?></p>
 						</div>
 					</a>
 				</li>
@@ -76,13 +71,12 @@
 				<fieldset>
 					<div id="viewByCashier1">
 						<p id="space_title">Select a cashier:<br /><br />
-					
 						<div id="listEarningCashiers">
 						</div>
 					
-					</p><br />
-					<a href="#" id="viewByCashierBtn2">TOTAL EARNINGS</a>
-					<a href="#" id="viewByCashierBtn1">VIEW EARNINGS</a><br />
+					</p>
+					<input type="button" id="viewByCashierBtn2" value="TOTAL EARNINGS"></a>
+					<input type="button" id="viewByCashierBtn1" value="VIEW EARNINGS"></a><br />
 					<div>
 
 					<div id="viewByCashier2">

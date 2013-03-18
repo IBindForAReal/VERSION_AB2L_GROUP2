@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database','session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'xml');
+$autoload['helper'] = array('url', 'xml','form');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('logAccess','foodAccess', 'categoryAccess', 'cashierAccess', 'imageAccess', 'orderAccess');
+$autoload['model'] = array('logAccess','foodAccess', 'categoryAccess', 'cashierAccess', 'orderAccess');
 
 
 /* End of file autoload.php */

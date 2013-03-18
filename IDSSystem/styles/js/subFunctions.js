@@ -1,3 +1,4 @@
+//update the time in the system
 function updateClock ( )
 {
   var currentTime = new Date ( );
@@ -26,6 +27,7 @@ function updateClock ( )
   document.getElementById("clock").firstChild.nodeValue = currentTimeString;
 }
 
+//view foods under each category
 function categorizeFoods(){
   $.ajax({
       url: "orderManager/obtainCategorization",
@@ -38,18 +40,29 @@ function categorizeFoods(){
     });
 }
 
+//select or unselect a food
 function toogleState(name){
   genId = "#" + name + "Ext";
 
   document.getElementById(name).selected = !document.getElementById(name).selected;
   if (document.getElementById(name).selected == true){
-    $(genId).append('<input type="number" name="orderCount" value="1" min="0" max="50"/>');
+    $.ajax({
+      url: "orderManager/obtainMaxCount",
+      type: "POST",
+      data: {foodName:name},
+
+      success: function(data) {
+        maxCount = data;
+        $(genId).append('<input type="number" name="orderCount" value="1" min="0" onkeypress="return false;" max="'+maxCount+'"/>');
+      }
+    });
   }
   else{
     $(genId).find('input[type="number"]').remove();
   }
 }
 
+//remove the square in the checkboxes
 function removeBoxes3(){
   inputs = document.enlistOrder.getElementsByTagName('input');
   for(var i=0; i < inputs.length; i++){
@@ -60,6 +73,7 @@ function removeBoxes3(){
   }
 }
 
+//get selected foods
 function orderSelectedFoods(){
   var selected = new Array();
   var quantity = new Array();
@@ -88,4 +102,53 @@ function orderSelectedFoods(){
         }
     });
  // });
+}
+
+//view the main page
+function initializeView(){
+  $(".enlistOrder").show();
+  $("#orderList").hide();
+}
+
+//when reset button is clicked
+function setUnselected(){
+    $("input:checkbox[name=selectFoods]:checked").each(function() {
+       name = $(this).val();
+       genId = "#" + name + "Ext";
+
+       $(this).attr('checked', false);
+       document.getElementById(name).selected = false;
+       $(genId).find('input[type="number"]').remove();
+  });
+}
+
+//function that add the order details to the xml
+function addToXML(){
+  var selected = new Array();
+  var quantity = new Array();
+
+ // $(document).ready(function() {
+
+  $("input:checkbox[name=selectFoods]:checked").each(function() {
+       selected.push($(this).val());
+       //alert($(this).val());
+       //alert($(this).parent().find('input[type="number"]').val());
+       quantity.push($(this).parent().find('input[type="number"]').val());
+  });
+
+  var cost = $("#cost").text();
+
+  var jsonString1 = JSON.stringify(selected);
+  var jsonString2 = JSON.stringify(quantity);
+   $.ajax({
+        type: "POST",
+        url: "orderManager/xmlAddOrder",
+        data: {data1 : jsonString1, data2 : jsonString2, cost : cost}, 
+        cache: false,
+
+        success: function(data){
+          //alert(data);
+          //alert("asdf");
+        }
+    });
 }

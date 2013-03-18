@@ -3,11 +3,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<?php
-	if(isset($message))
-		echo $message;
-?>
-
 	<head>
 		<title>McJolly</title>
 		<link rel="shortcut icon" href="favicon.png" />
@@ -24,7 +19,7 @@
 		<div class="menu">
 			<ul class="ca-menu">
 				<li>
-					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' id="show1">
+					<a href='<?php echo $_SERVER['PHP_SELF'].'#'; ?>' onclick='javacript:clearMessage();' id="show1">
 						<span class="ca-icon">F</span>
 						<div class="ca-content">
 							<p class="ca-main">Add Category</p>
@@ -75,7 +70,7 @@
 				<li>
 					<a>
 						<div class="ca-content">
-							<p class="ca-main_right"><?php echo $_SESSION['uname']; ?></p>
+							<p class="ca-main_right"><?php echo $this->session->userdata('uname'); ?></p>
 						</div>
 					</a>
 				</li>
@@ -90,7 +85,7 @@
 				<fieldset><p id="space_title">View Foods under Category</p><br />
 				<div id="listOfCategories3">
 				</div>	
-				<input type="button" name="searchCategory" value="SELECT" onclick='javascript:viewFoodUnderCategory();'>
+				<input type="button" name="searchCategory" id="viewButton1" value="SELECT" onclick='javascript:viewFoodUnderCategory();'>
 				<br /><br /><br />
 				<div id="foodUnderCategory">
 				</div>
@@ -109,7 +104,7 @@
 				<div id="listOfCategories2">
 				</div>
 
-				<input type="button" name="deleteCategory" value="DELETE CATEGORY" onclick='javascript:deleteSelectedCategory();javascript:listDeleteCategories();'>
+				<input type="button" name="deleteCategory" id="deleteButton1" value="DELETE" onclick='javascript:deleteSelectedCategory();'>
 			</fieldset>
 			</form>
 		</div>
@@ -125,7 +120,7 @@
 				<div id="listOfCategories1">
 				</div>
 				<br />
-				<input type="button" name="selectCategory" value="SELECT" onclick='javascript:viewCategoryDetails();'>
+				<input type="button" name="selectCategory" id="selectButton1" value="SELECT" onclick='javascript:viewCategoryDetails();'>
 				<br /><br /><br />
 				<div id="categoryDetails">
 				</div>
@@ -140,10 +135,10 @@
 		<div id="space1">
 			<form class="addCategory" method='post'>
 				<fieldset><p id="space_title">Add Category</p><br />
-				Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="name" name="categoryName" id="categoryName1" required="required" autofocus><br /><br /><br />
+				Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="name" name="categoryName" id="categoryName1" onkeyup='javascript:checkCategoryNameDuplicate(this.value);' required="required" autofocus><br /><br /><br />
 				Description: &nbsp;<input type="name" name="categoryDesc" id="categoryDesc1">
 
-				<input type="button" name="submitFood" value="ADD CATEGORY" onclick='javascript:addCategory();'>
+				<input type="button" id="addButton" name="submitFood" value="ADD CATEGORY" onclick='javascript:addCategory();'>
 				
 			</fieldset>
 			</form>

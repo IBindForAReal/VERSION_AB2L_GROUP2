@@ -35,7 +35,7 @@ class foodAccess extends CI_Model {
 	}
 
 	function getAllDeleteFoods(){
-		return $this->db->query("SELECT * from food")->result_array();
+		return $this->db->query("SELECT * from food order by food_name asc")->result_array();
 	}
 
 	function deleteSelectedFoods($name){
@@ -44,6 +44,13 @@ class foodAccess extends CI_Model {
 
 	function searchExistingPatterns($pattern){
 		return $this->db->query("SELECT * from food where food_name like '%$pattern%'")->result_array();
+	}
+
+	/*
+		This function checks if a category name is already existing
+	*/
+	function checkExistingName($name){
+		return  $this->db->query("SELECT food_name from food where food_name='$name'")->result_array();
 	}
 }
 ?>
